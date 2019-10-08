@@ -1,0 +1,17 @@
+// Override default variables before the import
+
+.navbar {
+  background-color: #bf5a16 !important;
+}
+
+.navbar-brand,
+.nav-link {
+  color: #ebebeb !important;
+}
+
+.form-control {
+  border-radius: 20px !important;
+}
+
+// Import Bootstrap and its default variables
+@import '~bootstrap/scss/bootstrap.scss';
