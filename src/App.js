@@ -1,14 +1,18 @@
-import React from 'react';
-import Header from './components/Header/Header';
+import React, { Component } from 'react';
+import './index.css';
+import NavbarPage from './components/Navbar/NavbarPage';
 
-import './App.css';
+import MainPage from './components/MainPage/MainPage';
 
-function App() {
-  return (
-    <React.Fragment>
-      <Header />
-    </React.Fragment>
-  );
+class App extends Component {
+  render() {
+    return (
+      <React.Fragment>
+        <NavbarPage />
+        <MainPage/>
+      </React.Fragment>
+    );
+  }
 }
 
 export default App;

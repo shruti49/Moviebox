@@ -1,0 +1,23 @@
+.navbar {
+  padding: 0.5rem 5rem;
+}
+
+.input-group-text {
+  border-top-left-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem;
+  background-color: #fff;
+  border-right-width: 0;
+}
+
+.form-control {
+  border-radius: 1.5rem;
+  border-left-width: 0;
+  padding: 0;
+  width: 250px !important;
+  height: 35px;
+}
+
+input:focus {
+  box-shadow: none !important;
+  border-color: #ced4da !important;
+}
