@@ -1,0 +1,14 @@
+.container {
+  margin-top: 100px;
+}
+
+.row {
+  margin: 0;
+}
+
+.main-page__header {
+  text-align: center;
+  border-bottom: 2px solid white;
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+}
