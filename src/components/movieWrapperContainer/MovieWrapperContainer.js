@@ -8,7 +8,6 @@ import "./MovieWrapperContainer.css";
 
 export default class MovieWrapperContainer extends Component {
   state = {
-    api: "65a0517cb48eb4ed5ad291617c54a98c",
     popularList: []
   };
 
@@ -18,7 +17,7 @@ export default class MovieWrapperContainer extends Component {
 
   fetchData = async () => {
     let response = await axios.get(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${this.state.api}&language=en-US&page=1`
+      `${this.props.link_url}movie/popular?api_key=${this.props.api_key}&language=en-US&page=1`
     );
     let data = response.data;
     // console.log(data.results);

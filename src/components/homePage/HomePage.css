@@ -12,3 +12,8 @@
   margin-bottom: 30px;
   padding-bottom: 10px;
 }
+
+.main-page__title {
+  color: #fff;
+  font-weight: 400;
+}

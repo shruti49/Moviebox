@@ -4,40 +4,56 @@ a {
 
 .browse-movie__link {
   display: inline-block;
-  transition: border 0.15s ease-in-out;
-  -moz-transition: border 0.15s ease-in-out;
-  -webkit-transition: border 0.15s ease-in-out;
-  border-radius: 4px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
   font-size: 24px;
+  border: 5px solid #fff;
+  position: relative;
 }
 
-img {
-  border: 5px solid #fff;
+.browse-movie__link:hover {
+  border: 5px solid #6ac045;
+  transition: border 1s ease;
+  background-color: #000;
+}
+
+.browse-movie__link:hover img {
+  opacity: 0.3;
+  transition: opacity 1s ease;
+}
+
+.browse-movie__link:hover figcaption {
+  opacity: 1;
+  text-align: center;
 }
 
 .movie-wrapper__container--item {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+figure {
+  margin: 0;
 }
 
 figcaption {
   color: #fff;
   height: 100%;
-  left: 0;
   opacity: 0;
   position: absolute;
-  right: 0;
-  top: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 2;
-  width: 100%;
-  -webkit-transition: all 300ms;
-  -moz-transition: all 300ms;
-  transition: all 300ms;
-  -webkit-transition-delay: 100ms;
-  -moz-transition-delay: 100ms;
-  transition-delay: 100ms;
-  padding-top: 20px;
+  padding-top: 40px;
+}
+
+figcaption span.icon-star {
+  color: #6ac045;
+  -webkit-transition: all 300ms ease;
+  -moz-transition: all 300ms ease;
+  transition: all 300ms ease;
+}
+
+h4.rating {
+  margin-top: 0.5rem;
 }
 
 .browse-movie__title {
@@ -51,6 +67,16 @@ figcaption {
   color: #919191;
 }
 
+.btn {
+  margin: 5rem 0 0 0;
+  padding: 5px;
+  text-transform: capitalize;
+}
+
+.btn-success {
+  background-color: #6ac045 !important;
+}
+
 @media (max-width: 575px) {
   .col-sm-4 {
     max-width: 50%;
@@ -60,5 +86,17 @@ figcaption {
 @media (min-width: 992px) {
   .movie-wrapper__container--item {
     height: 340px;
+  }
+}
+
+@media (max-width: 431px) {
+  .btn {
+    display: none;
+  }
+}
+
+@media (min-width: 575px) and (max-width: 992px) {
+  .btn {
+    display: none;
   }
 }

@@ -1,39 +1,31 @@
-import React, { Component } from "react";
+import React from "react";
 
-import NavbarPage from "./components/navbar/NavbarPage";
+import { Route } from "react-router-dom";
+
 import HomePage from "./components/homePage/HomePage";
+import BrowseMoviePage from "./components/browsemovies/BrowseMoviePage";
 
-// import axios from "axios";
+const App = () => {
+  const api_key = "65a0517cb48eb4ed5ad291617c54a98c";
+  const link_url = "https://api.themoviedb.org/3/";
 
-class App extends Component {
-  // state = {
-  //   query: "",
-  //   api: "65a0517cb48eb4ed5ad291617c54a98c"
-  // };
-
-  // componentDidMount() {
-  //   this.fetchData();
-  // }
-
-  // fetchData = async () => {
-  //   let response = await axios.get(
-  //     `https://api.themoviedb.org/3/movie/popular?api_key=${this.state.api}&language=en-US&page=1`
-  //   );
-  //   let data = response.data;
-  //   console.log(data);
-  // };
-
-  inputChange = event => {
-    console.log(event.target.value);
-  };
-  render() {
-    return (
-      <React.Fragment>
-        <NavbarPage inputChange={this.inputChange} />
-        <HomePage />
-      </React.Fragment>
-    );
-  }
-}
+  return (
+    <React.Fragment>
+      <Route
+        exact
+        path="/"
+        render={() => {
+          return <HomePage api_key={api_key} link_url={link_url} />;
+        }}
+      />
+      <Route
+        path="/movies"
+        render={() => {
+          return <BrowseMoviePage api_key={api_key} link_url={link_url} />;
+        }}
+      />
+    </React.Fragment>
+  );
+};
 
 export default App;
