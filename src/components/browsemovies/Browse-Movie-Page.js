@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 
-import NavbarPage from "../navbar/NavbarPage";
+import NavbarPage from "../navbar/Navbar-Page";
 // import MovieWrapperContainer from "../movieWrapperContainer/MovieWrapperContainer";
 
 const BrowseMoviePage = props => {

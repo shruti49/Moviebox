@@ -2,9 +2,7 @@ import React from "react";
 
 import { MDBCol, MDBBtn } from "mdbreact";
 
-import "./MovieWrapperItem.css";
-
-import { Link } from "react-router-dom";
+import "./MovieContainer.style.css";
 
 const limitMovieTitle = (title, limit = 20) => {
   const newTitle = [];
@@ -22,7 +20,7 @@ const limitMovieTitle = (title, limit = 20) => {
   return title;
 };
 
-const MovieWrapperItem = props => {
+const MovieContainer = props => {
   const { movieItem } = props;
   const date = new Date(movieItem.release_date).getFullYear();
   return (
@@ -36,7 +34,7 @@ const MovieWrapperItem = props => {
           />
           <figcaption className="hidden-xs hidden-sm">
             <span className="icon-star">
-              <i class="fas fa-star"></i>
+              <i className="fas fa-star"></i>
             </span>
             <h4 className="rating">{`${movieItem.vote_average}/10`}</h4>
             <MDBBtn color="success">View Details</MDBBtn>
@@ -53,4 +51,4 @@ const MovieWrapperItem = props => {
   );
 };
 
-export default MovieWrapperItem;
+export default MovieContainer;
