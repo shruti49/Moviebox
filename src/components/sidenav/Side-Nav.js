@@ -1,26 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import { MDBCol, MDBNavLink } from "mdbreact";
 
 import "./SideNav.style.css";
 
-import axios from "axios";
-
 const SideNav = props => {
-
-  const [category, setMovieCategory] = useState([]);
-
-  useEffect(() => {
-    const fetchGenre = async () => {
-      const response = await axios(
-        `${process.env.REACT_APP_LINK_URLl}genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
-      );
-
-      const data = response.data.genres;
-      setMovieCategory(data);
-    };
-    fetchGenre();
-  }, []);
+  const { genres, handleClick } = props;
 
   return (
     <MDBCol md="12">
@@ -33,10 +18,15 @@ const SideNav = props => {
         ></i>
         <div className="menu-list">
           <ul id="menu-content" className="menu-content collapse out">
-            {category.map(genre => {
+            {genres.map(genre => {
               return (
-                <li key={genre.id}>
-                  <MDBNavLink to={`/${genre.name}`}>{genre.name}</MDBNavLink>
+                <li key={genre.id} id={genre.id}>
+                  <MDBNavLink
+                    to={`/movies/${genre.name}`}
+                    onClick={handleClick}
+                  >
+                    {genre.name}
+                  </MDBNavLink>
                 </li>
               );
             })}
@@ -48,4 +38,3 @@ const SideNav = props => {
 };
 
 export default SideNav;
-
