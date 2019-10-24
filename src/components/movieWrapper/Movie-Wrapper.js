@@ -12,14 +12,14 @@ const MovieWrapper = props => {
   useEffect(() => {
     async function fetchData() {
       const response = await axios(
-        `${props.link_url}movie/popular?api_key=${props.api_key}&language=en-US&page=1`
+        `${process.env.REACT_APP_LINK_URL}movie/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
       );
 
       const data = response.data.results;
       setData(data);
     }
     fetchData();
-  }, [props.api_key, props.link_url]);
+  }, []);
 
   return (
     <MDBRow className="movie-wrapper__container">

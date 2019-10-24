@@ -41,10 +41,7 @@ class NavbarPage extends Component {
 
           <MDBNavbarNav right>
             <MDBNavItem>
-              <SearchBar
-                api_key={this.props.api_key}
-                link_url={this.props.link_url}
-              />
+              <SearchBar />
             </MDBNavItem>
           </MDBNavbarNav>
         </MDBCollapse>

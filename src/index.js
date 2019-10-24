@@ -9,7 +9,6 @@ import "./index.css";
 
 import App from "./App";
 
-import registerServiceWorker from "./registerServiceWorker";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -18,4 +17,4 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-registerServiceWorker();
+

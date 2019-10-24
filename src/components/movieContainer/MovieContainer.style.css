@@ -7,6 +7,7 @@ a {
   font-size: 24px;
   border: 5px solid #fff;
   position: relative;
+  padding: 0;
 }
 
 .browse-movie__link:hover {

@@ -7,20 +7,20 @@ import "./SideNav.style.css";
 import axios from "axios";
 
 const SideNav = props => {
-  const { link_url, api_key } = props;
+
   const [category, setMovieCategory] = useState([]);
 
   useEffect(() => {
     const fetchGenre = async () => {
       const response = await axios(
-        `${link_url}genre/movie/list?api_key=${api_key}&language=en-US`
+        `${process.env.REACT_APP_LINK_URLl}genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
       );
 
       const data = response.data.genres;
       setMovieCategory(data);
     };
     fetchGenre();
-  }, [link_url, api_key]);
+  }, []);
 
   return (
     <MDBCol md="12">
