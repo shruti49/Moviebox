@@ -14,7 +14,7 @@ const MovieWrapper = props => {
       const response = await axios(
         `${props.link_url}movie/popular?api_key=${props.api_key}&language=en-US&page=1`
       );
-      // conulresst data = response.res;
+
       const data = response.data.results;
       setData(data);
     }

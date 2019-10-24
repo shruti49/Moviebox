@@ -1,6 +1,6 @@
 import React from "react";
 
-import { MDBCol, MDBBtn } from "mdbreact";
+import { MDBCol, MDBBtn, MDBNavLink } from "mdbreact";
 
 import "./MovieContainer.style.css";
 
@@ -25,7 +25,7 @@ const MovieContainer = props => {
   const date = new Date(movieItem.release_date).getFullYear();
   return (
     <MDBCol className="movie-wrapper__container--item" sm="4" md="3">
-      <a className="browse-movie__link">
+      <MDBNavLink to="/" className="browse-movie__link">
         <figure>
           <img
             src={`http://image.tmdb.org/t/p/w185/${movieItem.poster_path}`}
@@ -40,7 +40,7 @@ const MovieContainer = props => {
             <MDBBtn color="success">View Details</MDBBtn>
           </figcaption>
         </figure>
-      </a>
+      </MDBNavLink>
       <div className="browse-movie">
         <div className="browse-movie__title">
           {limitMovieTitle(movieItem.title)}

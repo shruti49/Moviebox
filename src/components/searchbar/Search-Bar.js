@@ -5,9 +5,9 @@ import axios from "axios";
 const SearchBar = props => {
   const { link_url, api_key } = props;
   const [data, setData] = useState([]);
-
+  let input;
   const fetchData = async event => {
-    const input = event.target.value;
+    input = event.target.value;
     const response = await axios(
       `${link_url}search/movie?api_key=${api_key}&language=en-US&query=${input}&page=1&include_adult=false`
     );
@@ -29,6 +29,7 @@ const SearchBar = props => {
         placeholder="Quick search"
         aria-label="Quick search"
         aria-describedby="basic-addon"
+        value="input"
         onChange={fetchData}
       />
     </div>
