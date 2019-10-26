@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 
 import { MDBRow, MDBCol } from "mdbreact";
 
-import axios from 'axios'; 
+import axios from "axios";
 
-const SideContainer = (props) => {
-  const { id } = props;
+import MovieContainer from "../movieContainer/Movie-Container";
 
-  const [data,setData] = useState([]);
+const SideContainer = props => {
+  const { id, name } = props;
+
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const discoverMovies = async () => {
@@ -21,15 +23,25 @@ const SideContainer = (props) => {
     discoverMovies();
   }, [id]);
 
-
   return (
-    <MDBCol xs="12" sm="8" md="9" lg="10">
-      <h3 className="orange-text"></h3>
-      <MDBRow className="is-flex">
+    <MDBCol>
+      <h3 className="orange-text">{name}</h3>
+      <MDBRow className="movie-wrapper__container">
+        {data.map(movieItem => {
+          return (
+            <MDBCol
+              className="movie-wrapper__container--item"
+              sm="4"
+              md="3"
+              key={movieItem.id}
+            >
+              <MovieContainer movieItem={movieItem} key={movieItem.id} />
+            </MDBCol>
+          );
+        })}
       </MDBRow>
     </MDBCol>
   );
 };
 
 export default SideContainer;
-

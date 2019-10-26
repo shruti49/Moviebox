@@ -1,6 +1,6 @@
-import React from "react";
+import React, { Fragment } from "react";
 
-import { MDBCol, MDBBtn, MDBNavLink } from "mdbreact";
+import { MDBBtn, MDBNavLink } from "mdbreact";
 
 import "./MovieContainer.style.css";
 
@@ -24,7 +24,7 @@ const MovieContainer = props => {
   const { movieItem } = props;
   const date = new Date(movieItem.release_date).getFullYear();
   return (
-    <MDBCol className="movie-wrapper__container--item" sm="4" md="3">
+    <Fragment>
       <MDBNavLink to="/" className="browse-movie__link">
         <figure>
           <img
@@ -47,7 +47,7 @@ const MovieContainer = props => {
         </div>
         <div className="browse-movie__year">{date}</div>
       </div>
-    </MDBCol>
+    </Fragment>
   );
 };
 

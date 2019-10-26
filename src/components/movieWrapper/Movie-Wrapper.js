@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { MDBRow } from "mdbreact";
+import { MDBRow, MDBCol } from "mdbreact";
 
 import axios from "axios";
 import MovieContainer from "../movieContainer/Movie-Container";
@@ -24,7 +24,16 @@ const MovieWrapper = props => {
   return (
     <MDBRow className="movie-wrapper__container">
       {data.map(movieItem => {
-        return <MovieContainer movieItem={movieItem} key={movieItem.id} />;
+        return (
+          <MDBCol
+            className="movie-wrapper__container--item"
+            sm="4"
+            md="3"
+            key={movieItem.id}
+          >
+            <MovieContainer movieItem={movieItem} key={movieItem.id} />
+          </MDBCol>
+        );
       })}
     </MDBRow>
   );

@@ -13,6 +13,7 @@ const BrowseMoviePage = props => {
   const [category, setMovieCategory] = useState([]);
 
   const [genreId, setGenreId] = useState();
+  const [genreName, setGenreName] = useState();
 
   useEffect(() => {
     const fetchGenre = async () => {
@@ -28,6 +29,7 @@ const BrowseMoviePage = props => {
 
   const handleClick = event => {
     setGenreId(event.target.parentElement.id);
+    setGenreName(event.target.innerText);
   };
 
   return (
@@ -36,7 +38,7 @@ const BrowseMoviePage = props => {
       <MDBContainer fluid>
         <MDBRow>
           <SideNav genres={category} handleClick={handleClick} />
-          <SideContainer id={genreId}/>
+          <SideContainer name={genreName} id={genreId}/>
         </MDBRow>
       </MDBContainer>
     </Fragment>
