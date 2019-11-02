@@ -9,11 +9,12 @@ import SideContainer from "../sidecontainer/Side-Container";
 
 import axios from "axios";
 
-const BrowseMoviePage = props => {
+const BrowseMoviePage = () => {
   const [category, setMovieCategory] = useState([]);
-
-  const [genreId, setGenreId] = useState();
-  const [genreName, setGenreName] = useState();
+  const [genreId, setGenreId] = useState(28);
+  const [genreName, setGenreName] = useState("Action");
+  const [input, setInput] = useState("");
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchGenre = async () => {
@@ -27,6 +28,19 @@ const BrowseMoviePage = props => {
     fetchGenre();
   }, []);
 
+  const searchMovies = async event => {
+    try {
+      setInput(event.target.value);
+      const response = await axios(
+        `${process.env.REACT_APP_LINK_URL}search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${input}&page=1&include_adult=false`
+      );
+      const result = response.data.results;
+      setData(result);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const handleClick = event => {
     setGenreId(event.target.parentElement.id);
     setGenreName(event.target.innerText);
@@ -34,11 +48,16 @@ const BrowseMoviePage = props => {
 
   return (
     <Fragment>
-      <NavbarPage />
+      <NavbarPage searchMovies={searchMovies} />
       <MDBContainer fluid>
         <MDBRow>
           <SideNav genres={category} handleClick={handleClick} />
-          <SideContainer name={genreName} id={genreId}/>
+          <SideContainer
+            name={genreName}
+            id={genreId}
+            searchfield={input}
+            searchResults={data}
+          />
         </MDBRow>
       </MDBContainer>
     </Fragment>

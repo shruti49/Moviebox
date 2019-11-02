@@ -1,20 +1,6 @@
 import React, { useState } from "react";
 
-import axios from "axios";
-
-const SearchBar = props => {
-
-  const [data, setData] = useState([]);
-  let input;
-  const fetchData = async event => {
-    input = event.target.value;
-    const response = await axios(
-      `${process.env.REACT_APP_LINK_URL}search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${input}&page=1&include_adult=false`
-    );
-    const data = response.data.results;
-    setData(data);
-  };
-
+const SearchBar = ({ input, handleSearchInputChanges }) => {
   return (
     <div className="input-group">
       <div className="input-group-prepend">
@@ -28,10 +14,11 @@ const SearchBar = props => {
         placeholder="Quick search"
         aria-label="Quick search"
         aria-describedby="basic-addon"
-        onChange={fetchData}
+        value={input}
+        onChange={handleSearchInputChanges}
       />
     </div>
   );
 };
-
+//ab try kr
 export default SearchBar;

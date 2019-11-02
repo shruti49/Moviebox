@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import {
   MDBNavbar,
   MDBNavbarBrand,
@@ -12,42 +12,42 @@ import {
 import "./NavbarPage.style.css";
 import SearchBar from "../searchbar/Search-Bar";
 
-class NavbarPage extends Component {
-  state = {
-    isOpen: false
+const NavbarPage = ({ input, handleSearchInputChanges }) => {
+  const [state, setState] = useState(false);
+
+  const toggleCollapse = () => {
+    setState(!state);
   };
 
-  toggleCollapse = () => {
-    this.setState({ isOpen: !this.state.isOpen });
-  };
+  const bgColor = { backgroundColor: "#df691a" };
 
-  render() {
-    const bgColor = { backgroundColor: "#df691a" };
-    return (
-      <MDBNavbar style={bgColor} dark expand="md" scrolling fixed="top">
-        <MDBNavbarBrand>
-          <strong className="white-text">MovieBox</strong>
-        </MDBNavbarBrand>
-        <MDBNavbarToggler onClick={this.toggleCollapse} />
-        <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
-          <MDBNavbarNav left>
-            <MDBNavItem>
-              <MDBNavLink to="/">Home</MDBNavLink>
-            </MDBNavItem>
-            <MDBNavItem>
-              <MDBNavLink to="/movies">Categories</MDBNavLink>
-            </MDBNavItem>
-          </MDBNavbarNav>
+  return (
+    <MDBNavbar style={bgColor} dark expand="md" scrolling fixed="top">
+      <MDBNavbarBrand>
+        <strong className="white-text">MovieBox</strong>
+      </MDBNavbarBrand>
+      <MDBNavbarToggler onClick={toggleCollapse} />
+      <MDBCollapse id="navbarCollapse3" isOpen={state} navbar>
+        <MDBNavbarNav left>
+          <MDBNavItem>
+            <MDBNavLink to="/">Home</MDBNavLink>
+          </MDBNavItem>
+          <MDBNavItem>
+            <MDBNavLink to="/movies">Categories</MDBNavLink>
+          </MDBNavItem>
+        </MDBNavbarNav>
 
-          <MDBNavbarNav right>
-            <MDBNavItem>
-              <SearchBar />
-            </MDBNavItem>
-          </MDBNavbarNav>
-        </MDBCollapse>
-      </MDBNavbar>
-    );
-  }
-}
+        <MDBNavbarNav right>
+          <MDBNavItem>
+            <SearchBar
+              input={input}
+              handleSearchInputChanges={handleSearchInputChanges}
+            />
+          </MDBNavItem>
+        </MDBNavbarNav>
+      </MDBCollapse>
+    </MDBNavbar>
+  );
+};
 
 export default NavbarPage;

@@ -4,11 +4,9 @@ import { MDBCol, MDBNavLink } from "mdbreact";
 
 import "./SideNav.style.css";
 
-const SideNav = props => {
-  const { genres, handleClick } = props;
-
+const SideNav = ({ genres, handleClick }) => {
   return (
-    <MDBCol md="12">
+    <MDBCol md="3">
       <div className="nav-side-menu">
         <div className="brand">Movie Genre</div>
         <i
@@ -22,7 +20,7 @@ const SideNav = props => {
               return (
                 <li key={genre.id} id={genre.id}>
                   <MDBNavLink
-                    to={`/movies/${genre.name}`}
+                    to={`/movies/?id=${genre.id}&name=${genre.name}`}
                     onClick={handleClick}
                   >
                     {genre.name}

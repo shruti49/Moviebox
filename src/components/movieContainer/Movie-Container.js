@@ -4,6 +4,9 @@ import { MDBBtn, MDBNavLink } from "mdbreact";
 
 import "./MovieContainer.style.css";
 
+const DEFAULT_PLACEHOLDER_IMAGE =
+  "https://m.media-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX300.jpg";
+
 const limitMovieTitle = (title, limit = 20) => {
   const newTitle = [];
   if (title.length > limit) {
@@ -20,24 +23,23 @@ const limitMovieTitle = (title, limit = 20) => {
   return title;
 };
 
-const MovieContainer = props => {
-  const { movieItem } = props;
+const MovieContainer = ({ movieItem }) => {
   const date = new Date(movieItem.release_date).getFullYear();
+  console.log(movieItem);
+  const poster =
+    movieItem.poster_path !== null
+      ? `http://image.tmdb.org/t/p/w185${movieItem.poster_path}`
+      : DEFAULT_PLACEHOLDER_IMAGE;
   return (
     <Fragment>
       <MDBNavLink to="/" className="browse-movie__link">
         <figure>
-          <img
-            src={`http://image.tmdb.org/t/p/w185/${movieItem.poster_path}`}
-            alt={movieItem.title}
-            className="img-fluid"
-          />
+          <img src={poster} alt={movieItem.title} className="img-fluid" />
           <figcaption className="hidden-xs hidden-sm">
             <span className="icon-star">
               <i className="fas fa-star"></i>
             </span>
             <h4 className="rating">{`${movieItem.vote_average}/10`}</h4>
-            <MDBBtn color="success">View Details</MDBBtn>
           </figcaption>
         </figure>
       </MDBNavLink>
@@ -45,7 +47,7 @@ const MovieContainer = props => {
         <div className="browse-movie__title">
           {limitMovieTitle(movieItem.title)}
         </div>
-        <div className="browse-movie__year">{date}</div>
+        <div className="browse-movie__year">{!isNaN(date) && date}</div>
       </div>
     </Fragment>
   );
