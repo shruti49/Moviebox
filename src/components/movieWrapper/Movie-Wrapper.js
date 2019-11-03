@@ -9,11 +9,13 @@ const MovieWrapper = ({ searchfield, searchResults }) => {
 
   const [movies, setMovies] = useState([]);
 
+  const [data, setData] = useState([]);
+
   useEffect(() => {
     setMovies(searchResults);
   }, [searchResults]);
 
-  const [data, setData] = useState([]);
+
 
   useEffect(() => {
     try {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 const SearchBar = ({ input, handleSearchInputChanges }) => {
   return (
@@ -20,5 +20,5 @@ const SearchBar = ({ input, handleSearchInputChanges }) => {
     </div>
   );
 };
-//ab try kr
+
 export default SearchBar;

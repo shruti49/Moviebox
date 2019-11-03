@@ -6,13 +6,14 @@ import axios from "axios";
 import MovieContainer from "../movieContainer/Movie-Container";
 
 const SideContainer = ({ id, name, searchfield, searchResults }) => {
+  
   const [movies, setMovies] = useState([]);
+
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     setMovies(searchResults);
   }, [searchResults]);
-
-  const [data, setData] = useState([]);
 
   useEffect(() => {
     try {
@@ -33,7 +34,6 @@ const SideContainer = ({ id, name, searchfield, searchResults }) => {
   return (
     <MDBCol md="9">
       <h3 className="orange-text">{name}</h3>
-      {console.log(searchfield)}
       <MDBRow className="movie-wrapper__container">
         {searchfield.length <= 0
           ? data.map(movieItem => {
@@ -44,6 +44,7 @@ const SideContainer = ({ id, name, searchfield, searchResults }) => {
                   md="3"
                   key={movieItem.id}
                 >
+                  {console.log(movieItem)}
                   <MovieContainer movieItem={movieItem} key={movieItem.id} />
                 </MDBCol>
               );

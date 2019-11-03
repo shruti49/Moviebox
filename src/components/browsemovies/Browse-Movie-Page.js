@@ -11,10 +11,20 @@ import axios from "axios";
 
 const BrowseMoviePage = () => {
   const [category, setMovieCategory] = useState([]);
+
   const [genreId, setGenreId] = useState(28);
   const [genreName, setGenreName] = useState("Action");
-  const [input, setInput] = useState("");
+
+  const [searchValue, setSearchValue] = useState("");
   const [data, setData] = useState([]);
+
+  const handleSearchInputChange = e => {
+    setSearchValue(e.target.value);
+  };
+
+  const resetInputField = () => {
+    setSearchValue("");
+  };
 
   useEffect(() => {
     const fetchGenre = async () => {
@@ -28,18 +38,20 @@ const BrowseMoviePage = () => {
     fetchGenre();
   }, []);
 
-  const searchMovies = async event => {
-    try {
-      setInput(event.target.value);
-      const response = await axios(
-        `${process.env.REACT_APP_LINK_URL}search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${input}&page=1&include_adult=false`
+  useEffect(() => {
+    const searchMovies = async () => {
+      let response = await axios(
+        `${process.env.REACT_APP_LINK_URL}search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${searchValue}&page=1&include_adult=false`
       );
       const result = response.data.results;
       setData(result);
-    } catch (err) {
-      console.log(err);
+    };
+    if (searchValue.length > 0) {
+      searchMovies();
     }
-  };
+
+    //resetInputField();
+  }, [searchValue]);
 
   const handleClick = event => {
     setGenreId(event.target.parentElement.id);
@@ -48,14 +60,17 @@ const BrowseMoviePage = () => {
 
   return (
     <Fragment>
-      <NavbarPage searchMovies={searchMovies} />
+      <NavbarPage
+        input={searchValue}
+        handleSearchInputChanges={handleSearchInputChange}
+      />
       <MDBContainer fluid>
         <MDBRow>
           <SideNav genres={category} handleClick={handleClick} />
           <SideContainer
             name={genreName}
             id={genreId}
-            searchfield={input}
+            searchfield={searchValue}
             searchResults={data}
           />
         </MDBRow>

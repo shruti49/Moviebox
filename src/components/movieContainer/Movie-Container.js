@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
 
-import { MDBBtn, MDBNavLink } from "mdbreact";
+import { MDBNavLink } from "mdbreact";
 
 import "./MovieContainer.style.css";
 
 const DEFAULT_PLACEHOLDER_IMAGE =
-  "https://m.media-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX300.jpg";
+  "https://m.media-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX185.jpg";
 
 const limitMovieTitle = (title, limit = 20) => {
   const newTitle = [];
@@ -25,7 +25,6 @@ const limitMovieTitle = (title, limit = 20) => {
 
 const MovieContainer = ({ movieItem }) => {
   const date = new Date(movieItem.release_date).getFullYear();
-  console.log(movieItem);
   const poster =
     movieItem.poster_path !== null
       ? `http://image.tmdb.org/t/p/w185${movieItem.poster_path}`

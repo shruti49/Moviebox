@@ -12,6 +12,8 @@ import axios from "axios";
 const HomePage = () => {
   const [searchValue, setSearchValue] = useState("");
 
+  const [data, setData] = useState([]);
+
   const handleSearchInputChange = e => {
     setSearchValue(e.target.value);
   };
@@ -20,24 +22,21 @@ const HomePage = () => {
     setSearchValue("");
   };
 
-  const [data, setData] = useState([]);
-
   useEffect(() => {
-
     const searchMovies = async () => {
       let response = await axios(
         `${process.env.REACT_APP_LINK_URL}search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${searchValue}&page=1&include_adult=false`
       );
       const result = response.data.results;
       setData(result);
-      // resetInputField();
     };
-    if(searchValue.length > 0) {
+    if (searchValue.length > 0) {
       searchMovies();
     }
+
+    //resetInputField();
   }, [searchValue]);
 
-  //yhin hun 
   return (
     <Fragment>
       <NavbarPage
