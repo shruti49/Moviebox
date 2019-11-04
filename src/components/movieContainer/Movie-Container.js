@@ -28,6 +28,8 @@ const MovieContainer = ({ movieItem }) => {
   const poster =
     movieItem.poster_path !== null
       ? `http://image.tmdb.org/t/p/w185${movieItem.poster_path}`
+      : movieItem.backdrop_path !== null
+      ? `http://image.tmdb.org/t/p/w185${movieItem.backdrop_path}`
       : DEFAULT_PLACEHOLDER_IMAGE;
   return (
     <Fragment>
