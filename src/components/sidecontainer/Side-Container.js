@@ -6,7 +6,6 @@ import axios from "axios";
 import MovieContainer from "../movieContainer/Movie-Container";
 
 const SideContainer = ({ id, name, searchfield, searchResults }) => {
-  
   const [movies, setMovies] = useState([]);
 
   const [data, setData] = useState([]);
@@ -15,6 +14,7 @@ const SideContainer = ({ id, name, searchfield, searchResults }) => {
     setMovies(searchResults);
   }, [searchResults]);
 
+  //Fetching Movies According to Genre Id
   useEffect(() => {
     try {
       const discoverMovies = async () => {

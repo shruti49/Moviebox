@@ -18,10 +18,7 @@ const HomePage = () => {
     setSearchValue(e.target.value);
   };
 
-  const resetInputField = () => {
-    setSearchValue("");
-  };
-
+  //Searching Movies from the input text
   useEffect(() => {
     const searchMovies = async () => {
       let response = await axios(
@@ -33,8 +30,6 @@ const HomePage = () => {
     if (searchValue.length > 0) {
       searchMovies();
     }
-
-    //resetInputField();
   }, [searchValue]);
 
   return (

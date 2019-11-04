@@ -6,17 +6,16 @@ import axios from "axios";
 import MovieContainer from "../movieContainer/Movie-Container";
 
 const MovieWrapper = ({ searchfield, searchResults }) => {
-
   const [movies, setMovies] = useState([]);
 
   const [data, setData] = useState([]);
 
+  //Updating the state
   useEffect(() => {
     setMovies(searchResults);
   }, [searchResults]);
 
-
-
+  //Fetching Popular Movies
   useEffect(() => {
     try {
       async function fetchData() {
@@ -34,8 +33,7 @@ const MovieWrapper = ({ searchfield, searchResults }) => {
 
   return (
     <MDBRow className="movie-wrapper__container">
-      {console.log(searchfield.length, movies)}
-      {searchfield.length <=0
+      {searchfield.length <= 0
         ? data.map(movieItem => {
             return (
               <MDBCol

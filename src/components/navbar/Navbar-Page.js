@@ -15,6 +15,7 @@ import SearchBar from "../searchbar/Search-Bar";
 const NavbarPage = ({ input, handleSearchInputChanges }) => {
   const [state, setState] = useState(false);
 
+  //Collapsing of navbar
   const toggleCollapse = () => {
     setState(!state);
   };

@@ -22,10 +22,7 @@ const BrowseMoviePage = () => {
     setSearchValue(e.target.value);
   };
 
-  const resetInputField = () => {
-    setSearchValue("");
-  };
-
+  //Fetching Genre List
   useEffect(() => {
     const fetchGenre = async () => {
       const response = await axios(
@@ -38,6 +35,7 @@ const BrowseMoviePage = () => {
     fetchGenre();
   }, []);
 
+  //Searching Movies from the input text
   useEffect(() => {
     const searchMovies = async () => {
       let response = await axios(
@@ -49,10 +47,9 @@ const BrowseMoviePage = () => {
     if (searchValue.length > 0) {
       searchMovies();
     }
-
-    //resetInputField();
   }, [searchValue]);
 
+  //Setting genre name and id on clicking
   const handleClick = event => {
     setGenreId(event.target.parentElement.id);
     setGenreName(event.target.innerText);

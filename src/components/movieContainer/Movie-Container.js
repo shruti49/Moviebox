@@ -4,9 +4,7 @@ import { MDBNavLink } from "mdbreact";
 
 import "./MovieContainer.style.css";
 
-const DEFAULT_PLACEHOLDER_IMAGE =
-  "https://m.media-amazon.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX185.jpg";
-
+//Limiting the movie title characters
 const limitMovieTitle = (title, limit = 20) => {
   const newTitle = [];
   if (title.length > limit) {
@@ -24,13 +22,18 @@ const limitMovieTitle = (title, limit = 20) => {
 };
 
 const MovieContainer = ({ movieItem }) => {
+
+  //Setting Date 
   const date = new Date(movieItem.release_date).getFullYear();
+
+  //Setting Movie Images
   const poster =
-    movieItem.poster_path !== null
-      ? `http://image.tmdb.org/t/p/w185${movieItem.poster_path}`
-      : movieItem.backdrop_path !== null
-      ? `http://image.tmdb.org/t/p/w185${movieItem.backdrop_path}`
-      : DEFAULT_PLACEHOLDER_IMAGE;
+    (movieItem.poster_path &&
+      `${process.env.REACT_APP_IMAGE_URL}${movieItem.poster_path}`) ||
+    (movieItem.backdrop_path &&
+      `${process.env.REACT_APP_IMAGE_URL}${movieItem.backdrop_path}`) ||
+    `${process.env.REACT_APP_DEFAULT_PLACEHOLDER_IMAGE}`;
+
   return (
     <Fragment>
       <MDBNavLink to="/" className="browse-movie__link">
