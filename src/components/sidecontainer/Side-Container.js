@@ -44,7 +44,6 @@ const SideContainer = ({ id, name, searchfield, searchResults }) => {
                   md="3"
                   key={movieItem.id}
                 >
-                  {console.log(movieItem)}
                   <MovieContainer movieItem={movieItem} key={movieItem.id} />
                 </MDBCol>
               );
