@@ -8,19 +8,8 @@ import BrowseMoviePage from "./components/browsemovies/Browse-Movie-Page";
 const App = () => {
   return (
     <Fragment>
-      <Route
-        exact
-        path="/"
-        render={() => {
-          return <HomePage />;
-        }}
-      />
-      <Route
-        path="/movies"
-        render={() => {
-          return <BrowseMoviePage />;
-        }}
-      />
+      <Route exact path="/" component={HomePage} />
+      <Route path="/movies" component={BrowseMoviePage} />
     </Fragment>
   );
 };
